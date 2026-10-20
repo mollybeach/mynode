@@ -5,7 +5,30 @@ Drop-in files that let an ilovework checkout start with no Node install and no n
 - `start.command`: double-click (or `./start.command`) to start the app.
 - `runtime/`: the official Node.js 22 LTS (v22.23.3) for Apple Silicon and Intel, with nodejs.org's `SHASUMS256.txt`.
 
-## Add them to an ilovework folder
+## Quick start (one command)
+
+Put mynode and ilovework side by side in the same folder, for example your Kiro workspace:
+
+```
+YourWorkspace/          <- run the command from here
+├── mynode/
+└── ilovework/
+```
+
+Then, in Terminal, from that folder:
+
+```bash
+git -C mynode pull && ./mynode/ilovework-runtime/install.command
+```
+
+That's it. It finds `ilovework` next to `mynode`, copies `start.command` and `runtime/` into it, tells git to ignore
+the unpacked Node, and starts the app at http://localhost:3000. No Node install and no npm needed. After that, start
+the app any time with `./start.command` inside the ilovework folder.
+
+If ilovework isn't next to mynode, the installer searches your home folder for it, or you can give the path:
+`./mynode/ilovework-runtime/install.command ~/path/to/ilovework`.
+
+## Or do it by hand
 
 ```bash
 # 1. Get mynode (first time), or update it if you already have it
@@ -25,21 +48,6 @@ grep -qx '/runtime/node-\*/' .gitignore || printf '\n/runtime/node-*/\n' >> .git
 
 The first run unpacks Node, then opens http://localhost:3000. If something else is already using port 3000, run
 `PORT=3005 ./start.command`.
-
-### Or let the installer do it (any folder layout)
-
-From the folder that holds both mynode and ilovework (for example your Kiro workspace folder):
-
-```bash
-git -C mynode pull && ./mynode/ilovework-runtime/install.command
-```
-
-Or from inside the mynode folder: `git pull && ./ilovework-runtime/install.command`.
-
-It finds your ilovework folder (one named `ilovework` next to mynode, otherwise it searches your home folder), copies
-`start.command` and `runtime/` into it, adds the `.gitignore` line and starts the app. If it can't find the folder,
-give it the path: `./ilovework-runtime/install.command ~/path/to/ilovework`. You can also double-click
-`install.command` in Finder.
 
 ## How the launcher works
 
