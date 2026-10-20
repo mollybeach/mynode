@@ -8,7 +8,7 @@ from https://nodejs.org/dist/v22.23.3/, unchanged, with nodejs.org's published `
 | `node-v22.23.3-darwin-arm64.tar.xz` | Apple Silicon (M1 and later) |
 | `node-v22.23.3-darwin-x64.tar.xz` | Intel |
 
-## Jeremy: start ilovework (one command)
+## Jeremy: start ilovework
 
 Your folders are `~/Desktop/Kiro/Jeremy_Guzman/mynode` and `~/Desktop/Kiro/Jeremy_Guzman/ilovework`. In Terminal:
 

@@ -8,7 +8,7 @@ Drop-in files that let an ilovework checkout start with no Node install and no n
   when the ilovework folder has neither `dist/` nor `node_modules/`, which is what "next: command not found" means.
 - `install.command`: puts all of the above in place and starts the app (see Quick start).
 
-## Quick start (one command)
+## Quick start
 
 Put mynode and ilovework side by side in the same folder, for example your Kiro workspace:
 
@@ -54,9 +54,8 @@ If ilovework isn't next to mynode, the installer searches your home folder for i
 ## Or do it by hand
 
 ```bash
-# 1. Go to the folder that holds mynode and ilovework (Jeremy's: ~/Desktop/Kiro/Jeremy_Guzman), and update mynode
+# 1. Go to the folder that holds mynode and ilovework (Jeremy's: ~/Desktop/Kiro/Jeremy_Guzman)
 cd ~/Desktop/Kiro/Jeremy_Guzman
-git -C mynode pull
 
 # 2. Copy the two pieces into ilovework
 cp -R mynode/ilovework-runtime/runtime mynode/ilovework-runtime/start.command ilovework/
