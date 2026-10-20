@@ -18,18 +18,25 @@ YourWorkspace/          <- run the command from here
 └── ilovework/
 ```
 
-Then, in Terminal, from that folder:
+Then, in Terminal, from that folder, run the installer:
 
 ```bash
-git -C mynode pull && ./mynode/ilovework-runtime/install.command
+./mynode/ilovework-runtime/install.command
 ```
 
 Example: Jeremy's folders are `~/Desktop/Kiro/Jeremy_Guzman/mynode` and `~/Desktop/Kiro/Jeremy_Guzman/ilovework`, so he runs:
 
-```bash
-cd ~/Desktop/Kiro/Jeremy_Guzman
-git -C mynode pull && ./mynode/ilovework-runtime/install.command
-```
+1. Go to the folder that holds `mynode` and `ilovework`:
+
+   ```bash
+   cd ~/Desktop/Kiro/Jeremy_Guzman
+   ```
+
+2. Run the installer:
+
+   ```bash
+   ./mynode/ilovework-runtime/install.command
+   ```
 
 and afterwards starts the app with:
 

@@ -20,7 +20,6 @@ fi
 I="$(cd "$I" && pwd)"
 
 echo "Copying start.command and runtime/ into $I"
-(cd "$M" && git pull -q 2>/dev/null)
 mkdir -p "$I/runtime"
 cp "$SRC"/runtime/* "$I/runtime/" && cp "$SRC/start.command" "$I/" && chmod +x "$I/start.command" || { echo "Copy failed."; read -r; exit 1; }
 # The prebuilt app (Next.js included) when this ilovework doesn't have it yet, so it runs without npm or node_modules.
