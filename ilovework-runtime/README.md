@@ -44,15 +44,15 @@ If ilovework isn't next to mynode, the installer searches your home folder for i
 ## Or do it by hand
 
 ```bash
-# 1. Get mynode (first time), or update it if you already have it
-git clone git@github.com:mollybeach/mynode.git ~/mynode
-cd ~/mynode && git pull
+# 1. Go to the folder that holds mynode and ilovework (Jeremy's: ~/Desktop/Kiro/Jeremy_Guzman), and update mynode
+cd ~/Desktop/Kiro/Jeremy_Guzman
+git -C mynode pull
 
-# 2. Copy the two pieces into your ilovework folder (use your own paths here)
-cp -R ~/mynode/ilovework-runtime/runtime ~/mynode/ilovework-runtime/start.command ~/Documents/git/ilovework/
+# 2. Copy the two pieces into ilovework
+cp -R mynode/ilovework-runtime/runtime mynode/ilovework-runtime/start.command ilovework/
 
 # 3. Tell git to ignore the Node it unpacks
-cd ~/Documents/git/ilovework
+cd ilovework
 grep -qx '/runtime/node-\*/' .gitignore || printf '\n/runtime/node-*/\n' >> .gitignore
 
 # 4. Start it (or double-click start.command in Finder)

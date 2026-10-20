@@ -46,16 +46,16 @@ Node.js is MIT licensed; its license (`LICENSE`) is inside each archive.
 
 ## Troubleshooting: "npm not installed" / "command not found"
 
-Paste this whole block into Terminal (it assumes the clone is at `~/mynode`; change that path if yours is elsewhere):
+Paste this whole block into Terminal (it uses Jeremy's mynode folder, `~/Desktop/Kiro/Jeremy_Guzman/mynode`; change that path if yours is elsewhere):
 
 ```bash
 echo "shell: $SHELL"
-ls ~/mynode/node/bin 2>&1
+ls ~/Desktop/Kiro/Jeremy_Guzman/mynode/node/bin 2>&1
 grep -n "mynode" ~/.zshrc ~/.bash_profile ~/.bashrc 2>/dev/null
 echo "PATH: $PATH"
 which node npm
-~/mynode/node/bin/node -v 2>&1
-~/mynode/node/bin/npm -v 2>&1
+~/Desktop/Kiro/Jeremy_Guzman/mynode/node/bin/node -v 2>&1
+~/Desktop/Kiro/Jeremy_Guzman/mynode/node/bin/npm -v 2>&1
 ```
 
 What each line tells you:
