@@ -29,17 +29,17 @@ are needed and nothing is installed system-wide. To remove it, delete the folder
 
 After `setup.command`:
 
-1. Add the line it printed to `~/.zshrc`. For the `~/tools` location it's:
+1. From inside the `mynode` folder (wherever you cloned it), add it to `~/.zshrc`:
 
    ```bash
-   echo 'export PATH="$HOME/tools/mynode/node/bin:$PATH"' >> ~/.zshrc
+   echo "export PATH=\"$(pwd)/node/bin:\$PATH\"" >> ~/.zshrc
    ```
 
 2. Load it, or open a new Terminal window: `source ~/.zshrc`
 3. Check both: `node -v` should say `v22.23.3`, and `npm -v` should say `10.9.9`.
 
-If they still say "command not found", `mynode` is probably somewhere other than `~/tools`: `ls ~/tools/mynode/node/bin`
-shows whether the folder is there. Then check what `which node`, `node -v` and `npm -v` print, and fix the path in
-`~/.zshrc` to match.
+If they still say "command not found", find the folder with
+`find ~ -maxdepth 5 -type d -path "*mynode/node/bin" 2>/dev/null`, make sure the `export PATH=...` line in `~/.zshrc`
+points at it (remove any older one that points somewhere else), and open a new Terminal window.
 
 Node.js is MIT licensed; its license (`LICENSE`) is inside each archive.
