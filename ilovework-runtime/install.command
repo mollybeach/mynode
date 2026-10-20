@@ -1,6 +1,6 @@
 #!/bin/bash
-# Copies start.command, runtime/ (Node) and, if it's missing, dist/ (the prebuilt app with Next.js) into an ilovework
-# folder, then starts it. Works from wherever mynode was cloned.
+# Copies start.command, runtime/ (Node) and dist/ (the prebuilt app with Next.js) into an ilovework folder, then
+# starts it. Works from wherever mynode was cloned.
 #   ./ilovework-runtime/install.command                 finds ilovework (next to mynode, or under your home folder)
 #   ./ilovework-runtime/install.command /path/ilovework  uses that folder
 SRC="$(cd "$(dirname "$0")" && pwd)"
@@ -19,13 +19,11 @@ fi
 [ -n "$I" ] && is_app "$I" || { echo "Couldn't find the ilovework folder. Run it again with the path, e.g.: ./ilovework-runtime/install.command ~/path/to/ilovework"; read -r; exit 1; }
 I="$(cd "$I" && pwd)"
 
-echo "Copying start.command and runtime/ into $I"
+echo "Copying start.command and runtime/ (Node) into $I"
 mkdir -p "$I/runtime"
 cp "$SRC"/runtime/* "$I/runtime/" && cp "$SRC/start.command" "$I/" && chmod +x "$I/start.command" || { echo "Copy failed."; read -r; exit 1; }
-# The prebuilt app (Next.js included) when this ilovework doesn't have it yet, so it runs without npm or node_modules.
-if [ ! -f "$I/dist/server.js" ] && [ ! -f "$I/node_modules/next/dist/bin/next" ]; then
-  echo "Adding the prebuilt app (dist/, includes Next.js)"
-  cp -R "$SRC/dist" "$I/dist" || { echo "Copy of dist/ failed."; read -r; exit 1; }
-fi
+# The prebuilt app (Next.js included), so it runs without npm, next or node_modules. Always the copy from mynode.
+echo "Copying the prebuilt app (dist/, includes Next.js)"
+rm -rf "$I/dist" && cp -R "$SRC/dist" "$I/dist" || { echo "Copy of dist/ failed."; read -r; exit 1; }
 grep -qx '/runtime/node-\*/' "$I/.gitignore" 2>/dev/null || printf '\n/runtime/node-*/\n' >> "$I/.gitignore"
 cd "$I" && exec ./start.command

@@ -4,8 +4,8 @@ Drop-in files that let an ilovework checkout start with no Node install and no n
 
 - `start.command`: double-click (or `./start.command`) to start the app.
 - `runtime/`: the official Node.js 22 LTS (v22.23.3) for Apple Silicon and Intel, with nodejs.org's `SHASUMS256.txt`.
-- `dist/`: the prebuilt ilovework app, with Next.js and everything it needs inside. `install.command` copies it in
-  when the ilovework folder has neither `dist/` nor `node_modules/`, which is what "next: command not found" means.
+- `dist/`: the prebuilt ilovework app, with Next.js and everything it needs inside. `install.command` copies it in every
+  time, so "next: command not found" can't happen: nothing needs npm.
 - `install.command`: puts all of the above in place and starts the app (see Quick start).
 
 ## Quick start
@@ -26,17 +26,11 @@ Then, in Terminal, from that folder, run the installer:
 
 Example: Jeremy's folders are `~/Desktop/Kiro/Jeremy_Guzman/mynode` and `~/Desktop/Kiro/Jeremy_Guzman/ilovework`, so he runs:
 
-1. Go to the folder that holds `mynode` and `ilovework`:
+Run this one command in Terminal:
 
-   ```bash
-   cd ~/Desktop/Kiro/Jeremy_Guzman
-   ```
-
-2. Run the installer:
-
-   ```bash
-   ./mynode/ilovework-runtime/install.command
-   ```
+```bash
+cd ~/Desktop/Kiro/Jeremy_Guzman && ./mynode/ilovework-runtime/install.command
+```
 
 and afterwards starts the app with:
 
@@ -44,7 +38,7 @@ and afterwards starts the app with:
 cd ~/Desktop/Kiro/Jeremy_Guzman/ilovework && ./start.command
 ```
 
-That's it. It finds `ilovework` next to `mynode`, copies `start.command`, `runtime/` and (if missing) `dist/` into it, tells git to ignore
+That's it. It finds `ilovework` next to `mynode`, copies `dist/` (the app with Next.js), `runtime/` (Node) and `start.command` into it, tells git to ignore
 the unpacked Node, and starts the app at http://localhost:3000. No Node install and no npm needed. After that, start
 the app any time with `./start.command` inside the ilovework folder.
 
