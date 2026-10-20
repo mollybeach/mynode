@@ -26,6 +26,15 @@ grep -qx '/runtime/node-\*/' .gitignore || printf '\n/runtime/node-*/\n' >> .git
 The first run unpacks Node, then opens http://localhost:3000. If something else is already using port 3000, run
 `PORT=3005 ./start.command`.
 
+### One-line version
+
+Set `M` to your mynode folder and `I` to your ilovework folder, then paste the whole line into Terminal. It stops
+at the first error; otherwise the app opens.
+
+```bash
+M=~/mynode; I=~/Documents/git/ilovework; cd "$M" && git pull && mkdir -p "$I/runtime" && cp "$M"/ilovework-runtime/runtime/* "$I/runtime/" && cp "$M/ilovework-runtime/start.command" "$I/" && chmod +x "$I/start.command" && (grep -qx '/runtime/node-\*/' "$I/.gitignore" || printf '\n/runtime/node-*/\n' >> "$I/.gitignore") && cd "$I" && ./start.command
+```
+
 ## How the launcher works
 
 - **Node:** it uses the Mac's own Node if there is one (18.18 or newer), otherwise the bundled one.
