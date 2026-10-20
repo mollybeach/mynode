@@ -12,7 +12,7 @@ Drop-in files that let an ilovework checkout start with no Node install and no n
 git clone git@github.com:mollybeach/mynode.git ~/mynode
 cd ~/mynode && git pull
 
-# 2. Copy the two pieces into your ilovework folder (change the path to where yours is)
+# 2. Copy the two pieces into your ilovework folder (use your own paths here)
 cp -R ~/mynode/ilovework-runtime/runtime ~/mynode/ilovework-runtime/start.command ~/Documents/git/ilovework/
 
 # 3. Tell git to ignore the Node it unpacks
@@ -26,14 +26,20 @@ grep -qx '/runtime/node-\*/' .gitignore || printf '\n/runtime/node-*/\n' >> .git
 The first run unpacks Node, then opens http://localhost:3000. If something else is already using port 3000, run
 `PORT=3005 ./start.command`.
 
-### One-line version
+### Or let the installer do it (any folder layout)
 
-Set `M` to your mynode folder and `I` to your ilovework folder, then paste the whole line into Terminal. It stops
-at the first error; otherwise the app opens.
+From the folder that holds both mynode and ilovework (for example your Kiro workspace folder):
 
 ```bash
-M=~/mynode; I=~/Documents/git/ilovework; cd "$M" && git pull && mkdir -p "$I/runtime" && cp "$M"/ilovework-runtime/runtime/* "$I/runtime/" && cp "$M/ilovework-runtime/start.command" "$I/" && chmod +x "$I/start.command" && (grep -qx '/runtime/node-\*/' "$I/.gitignore" || printf '\n/runtime/node-*/\n' >> "$I/.gitignore") && cd "$I" && ./start.command
+git -C mynode pull && ./mynode/ilovework-runtime/install.command
 ```
+
+Or from inside the mynode folder: `git pull && ./ilovework-runtime/install.command`.
+
+It finds your ilovework folder (one named `ilovework` next to mynode, otherwise it searches your home folder), copies
+`start.command` and `runtime/` into it, adds the `.gitignore` line and starts the app. If it can't find the folder,
+give it the path: `./ilovework-runtime/install.command ~/path/to/ilovework`. You can also double-click
+`install.command` in Finder.
 
 ## How the launcher works
 
