@@ -21,6 +21,19 @@ Then, in Terminal, from that folder:
 git -C mynode pull && ./mynode/ilovework-runtime/install.command
 ```
 
+Example: Jeremy's folders are `~/Desktop/Kiro/Jeremy_Guzman/mynode` and `~/Desktop/Kiro/Jeremy_Guzman/ilovework`, so he runs:
+
+```bash
+cd ~/Desktop/Kiro/Jeremy_Guzman
+git -C mynode pull && ./mynode/ilovework-runtime/install.command
+```
+
+and afterwards starts the app with:
+
+```bash
+cd ~/Desktop/Kiro/Jeremy_Guzman/ilovework && ./start.command
+```
+
 That's it. It finds `ilovework` next to `mynode`, copies `start.command` and `runtime/` into it, tells git to ignore
 the unpacked Node, and starts the app at http://localhost:3000. No Node install and no npm needed. After that, start
 the app any time with `./start.command` inside the ilovework folder.

@@ -82,5 +82,18 @@ Put mynode and ilovework side by side in the same folder, then from that folder 
 git -C mynode pull && ./mynode/ilovework-runtime/install.command
 ```
 
+Example: Jeremy's folders are `~/Desktop/Kiro/Jeremy_Guzman/mynode` and `~/Desktop/Kiro/Jeremy_Guzman/ilovework`, so he runs:
+
+```bash
+cd ~/Desktop/Kiro/Jeremy_Guzman
+git -C mynode pull && ./mynode/ilovework-runtime/install.command
+```
+
+and afterwards starts the app with:
+
+```bash
+cd ~/Desktop/Kiro/Jeremy_Guzman/ilovework && ./start.command
+```
+
 It copies the launcher and this Node into ilovework and starts the app (no Node install, no npm). Details:
 `ilovework-runtime/README.md`.
