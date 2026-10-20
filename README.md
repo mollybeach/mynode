@@ -17,8 +17,9 @@ cd ~/Desktop/Kiro/Jeremy_Guzman
 git -C mynode pull && ./mynode/ilovework-runtime/install.command
 ```
 
-That copies `start.command` and this Node into `ilovework` and starts the app at http://localhost:3000. No Node
-install and no npm needed. After that, start it any time with:
+That copies `start.command`, this Node and (if `ilovework` doesn't have it yet) the prebuilt app `dist/`, which
+includes Next.js, into `ilovework`, then starts the app at http://localhost:3000. No Node install, no npm and no
+`next` needed. After that, start it any time with:
 
 ```bash
 cd ~/Desktop/Kiro/Jeremy_Guzman/ilovework && ./start.command

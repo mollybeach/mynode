@@ -1,0 +1,12 @@
+{
+  "components/NewThing.tsx -> ./NewThingModal": {
+    "id": 16999,
+    "files": [
+      "static/chunks/4535-60e1047d13bfe11f.js",
+      "static/chunks/9709-1dfe00feaf596b9f.js",
+      "static/chunks/2910-8f62e7ed7304c3b5.js",
+      "static/chunks/8353-3c73455d3006f9e8.js",
+      "static/chunks/6999.230ba717f5ef1cc1.js"
+    ]
+  }
+}

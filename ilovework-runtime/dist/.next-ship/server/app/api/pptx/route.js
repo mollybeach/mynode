@@ -1,0 +1,58 @@
+(()=>{var a={};a.id=5594,a.ids=[5594],a.modules={261:a=>{"use strict";a.exports=require("next/dist/shared/lib/router/utils/app-paths")},3295:a=>{"use strict";a.exports=require("next/dist/server/app-render/after-task-async-storage.external.js")},10846:a=>{"use strict";a.exports=require("next/dist/compiled/next-server/app-page.runtime.prod.js")},19121:a=>{"use strict";a.exports=require("next/dist/server/app-render/action-async-storage.external.js")},21820:a=>{"use strict";a.exports=require("os")},24532:(a,b,c)=>{"use strict";c.r(b),c.d(b,{handler:()=>I,patchFetch:()=>H,routeModule:()=>D,serverHooks:()=>G,workAsyncStorage:()=>E,workUnitAsyncStorage:()=>F});var d={};c.r(d),c.d(d,{GET:()=>C});var e=c(95736),f=c(9117),g=c(4044),h=c(39326),i=c(32324),j=c(261),k=c(54290),l=c(85328),m=c(38928),n=c(46595),o=c(3421),p=c(17679),q=c(41681),r=c(63446),s=c(86439),t=c(51356),u=c(10641),v=c(29021),w=c.n(v),x=c(33873),y=c.n(x),z=c(53616),A=c(99045),B=c(27591);async function C(a){var b;let c=a.nextUrl.searchParams.get("slug")??"",d=(0,z.rG)(c);if(!d||"pptx"!==d.assetType)return u.NextResponse.json({error:"Presentation not found"},{status:404});if(!w().existsSync(d.filePath))return u.NextResponse.json({error:"File not found"},{status:404});let e=(b=d.filePath,y().join(y().dirname(b),".previews",y().basename(b).replace(/\.pptx?$/i,".pdf")));if(a.nextUrl.searchParams.get("preview"))return w().existsSync(e)?new u.NextResponse(new Uint8Array(w().readFileSync(e)),{headers:{"Content-Type":"application/pdf","Content-Disposition":`inline; filename="${encodeURIComponent(y().basename(e))}"`}}):u.NextResponse.json({error:"No PDF preview exported for this deck"},{status:404});if(d.filePath.toLowerCase().endsWith(".ppt"))return u.NextResponse.json({slides:[],hasPreview:w().existsSync(e),error:"Legacy .ppt can't be outlined — open it in PowerPoint/Keynote"});let f=(0,B.U)(A.o_,d.filePath);return f.ok?u.NextResponse.json({...f.data,hasPreview:w().existsSync(e)}):u.NextResponse.json({error:f.error,hasPreview:w().existsSync(e)},{status:f.status})}let D=new e.AppRouteRouteModule({definition:{kind:f.RouteKind.APP_ROUTE,page:"/api/pptx/route",pathname:"/api/pptx",filename:"route",bundlePath:"app/api/pptx/route"},distDir:".next-ship",relativeProjectDir:"",resolvedPagePath:"/Users/beachmolly/Documents/records/iloveworky/src/app/api/pptx/route.ts",nextConfigOutput:"standalone",userland:d}),{workAsyncStorage:E,workUnitAsyncStorage:F,serverHooks:G}=D;function H(){return(0,g.patchFetch)({workAsyncStorage:E,workUnitAsyncStorage:F})}async function I(a,b,c){var d;let e="/api/pptx/route";"/index"===e&&(e="/");let g=await D.prepare(a,b,{srcPage:e,multiZoneDraftMode:!1});if(!g)return b.statusCode=400,b.end("Bad Request"),null==c.waitUntil||c.waitUntil.call(c,Promise.resolve()),null;let{buildId:u,params:v,nextConfig:w,isDraftMode:x,prerenderManifest:y,routerServerContext:z,isOnDemandRevalidate:A,revalidateOnlyGenerated:B,resolvedPathname:C}=g,E=(0,j.normalizeAppPath)(e),F=!!(y.dynamicRoutes[E]||y.routes[C]);if(F&&!x){let a=!!y.routes[C],b=y.dynamicRoutes[E];if(b&&!1===b.fallback&&!a)throw new s.NoFallbackError}let G=null;!F||D.isDev||x||(G="/index"===(G=C)?"/":G);let H=!0===D.isDev||!F,I=F&&!H,J=a.method||"GET",K=(0,i.getTracer)(),L=K.getActiveScopeSpan(),M={params:v,prerenderManifest:y,renderOpts:{experimental:{cacheComponents:!!w.experimental.cacheComponents,authInterrupts:!!w.experimental.authInterrupts},supportsDynamicResponse:H,incrementalCache:(0,h.getRequestMeta)(a,"incrementalCache"),cacheLifeProfiles:null==(d=w.experimental)?void 0:d.cacheLife,isRevalidate:I,waitUntil:c.waitUntil,onClose:a=>{b.on("close",a)},onAfterTaskError:void 0,onInstrumentationRequestError:(b,c,d)=>D.onRequestError(a,b,d,z)},sharedContext:{buildId:u}},N=new k.NodeNextRequest(a),O=new k.NodeNextResponse(b),P=l.NextRequestAdapter.fromNodeNextRequest(N,(0,l.signalFromNodeResponse)(b));try{let d=async c=>D.handle(P,M).finally(()=>{if(!c)return;c.setAttributes({"http.status_code":b.statusCode,"next.rsc":!1});let d=K.getRootSpanAttributes();if(!d)return;if(d.get("next.span_type")!==m.BaseServerSpan.handleRequest)return void console.warn(`Unexpected root span type '${d.get("next.span_type")}'. Please report this Next.js issue https://github.com/vercel/next.js`);let e=d.get("next.route");if(e){let a=`${J} ${e}`;c.setAttributes({"next.route":e,"http.route":e,"next.span_name":a}),c.updateName(a)}else c.updateName(`${J} ${a.url}`)}),g=async g=>{var i,j;let k=async({previousCacheEntry:f})=>{try{if(!(0,h.getRequestMeta)(a,"minimalMode")&&A&&B&&!f)return b.statusCode=404,b.setHeader("x-nextjs-cache","REVALIDATED"),b.end("This page could not be found"),null;let e=await d(g);a.fetchMetrics=M.renderOpts.fetchMetrics;let i=M.renderOpts.pendingWaitUntil;i&&c.waitUntil&&(c.waitUntil(i),i=void 0);let j=M.renderOpts.collectedTags;if(!F)return await (0,o.I)(N,O,e,M.renderOpts.pendingWaitUntil),null;{let a=await e.blob(),b=(0,p.toNodeOutgoingHttpHeaders)(e.headers);j&&(b[r.NEXT_CACHE_TAGS_HEADER]=j),!b["content-type"]&&a.type&&(b["content-type"]=a.type);let c=void 0!==M.renderOpts.collectedRevalidate&&!(M.renderOpts.collectedRevalidate>=r.INFINITE_CACHE)&&M.renderOpts.collectedRevalidate,d=void 0===M.renderOpts.collectedExpire||M.renderOpts.collectedExpire>=r.INFINITE_CACHE?void 0:M.renderOpts.collectedExpire;return{value:{kind:t.CachedRouteKind.APP_ROUTE,status:e.status,body:Buffer.from(await a.arrayBuffer()),headers:b},cacheControl:{revalidate:c,expire:d}}}}catch(b){throw(null==f?void 0:f.isStale)&&await D.onRequestError(a,b,{routerKind:"App Router",routePath:e,routeType:"route",revalidateReason:(0,n.c)({isRevalidate:I,isOnDemandRevalidate:A})},z),b}},l=await D.handleResponse({req:a,nextConfig:w,cacheKey:G,routeKind:f.RouteKind.APP_ROUTE,isFallback:!1,prerenderManifest:y,isRoutePPREnabled:!1,isOnDemandRevalidate:A,revalidateOnlyGenerated:B,responseGenerator:k,waitUntil:c.waitUntil});if(!F)return null;if((null==l||null==(i=l.value)?void 0:i.kind)!==t.CachedRouteKind.APP_ROUTE)throw Object.defineProperty(Error(`Invariant: app-route received invalid cache entry ${null==l||null==(j=l.value)?void 0:j.kind}`),"__NEXT_ERROR_CODE",{value:"E701",enumerable:!1,configurable:!0});(0,h.getRequestMeta)(a,"minimalMode")||b.setHeader("x-nextjs-cache",A?"REVALIDATED":l.isMiss?"MISS":l.isStale?"STALE":"HIT"),x&&b.setHeader("Cache-Control","private, no-cache, no-store, max-age=0, must-revalidate");let m=(0,p.fromNodeOutgoingHttpHeaders)(l.value.headers);return(0,h.getRequestMeta)(a,"minimalMode")&&F||m.delete(r.NEXT_CACHE_TAGS_HEADER),!l.cacheControl||b.getHeader("Cache-Control")||m.get("Cache-Control")||m.set("Cache-Control",(0,q.getCacheControlHeader)(l.cacheControl)),await (0,o.I)(N,O,new Response(l.value.body,{headers:m,status:l.value.status||200})),null};L?await g(L):await K.withPropagatedContext(a.headers,()=>K.trace(m.BaseServerSpan.handleRequest,{spanName:`${J} ${a.url}`,kind:i.SpanKind.SERVER,attributes:{"http.method":J,"http.target":a.url}},g))}catch(b){if(b instanceof s.NoFallbackError||await D.onRequestError(a,b,{routerKind:"App Router",routePath:E,routeType:"route",revalidateReason:(0,n.c)({isRevalidate:I,isOnDemandRevalidate:A})}),F)throw b;return await (0,o.I)(N,O,new Response(null,{status:500})),null}}},27591:(a,b,c)=>{"use strict";c.d(b,{U:()=>e});var d=c(79646);function e(a,b){let c;try{c=(0,d.execFileSync)("python3",["-c",a,b],{timeout:15e3,maxBuffer:0x4000000}).toString().trim()}catch(a){if("ENOENT"===a.code)return{ok:!1,status:503,error:"python3 is not available on this server"};return{ok:!1,status:500,error:a.stderr?.toString().trim()||a.message||String(a)}}try{let a=JSON.parse(c);if(a&&"object"==typeof a&&!Array.isArray(a)&&"error"in a)return{ok:!1,status:500,error:String(a.error)};return{ok:!0,data:a}}catch{return{ok:!1,status:500,error:"Could not parse python output"}}}},29021:a=>{"use strict";a.exports=require("fs")},29294:a=>{"use strict";a.exports=require("next/dist/server/app-render/work-async-storage.external.js")},33873:a=>{"use strict";a.exports=require("path")},43531:a=>{"use strict";a.exports=require("gray-matter")},44870:a=>{"use strict";a.exports=require("next/dist/compiled/next-server/app-route.runtime.prod.js")},55511:a=>{"use strict";a.exports=require("crypto")},62536:a=>{"use strict";a.exports=require("next/dist/server/app-render/work-unit-async-storage.external")},63033:a=>{"use strict";a.exports=require("next/dist/server/app-render/work-unit-async-storage.external.js")},78335:()=>{},79646:a=>{"use strict";a.exports=require("child_process")},86439:a=>{"use strict";a.exports=require("next/dist/shared/lib/no-fallback-error.external")},96487:()=>{},99045:(a,b,c)=>{"use strict";c.d(b,{o_:()=>d}),c(27591);let d=`
+import json, sys, zipfile, posixpath
+import xml.etree.ElementTree as ET
+NS = {"a": "http://schemas.openxmlformats.org/drawingml/2006/main",
+      "p": "http://schemas.openxmlformats.org/presentationml/2006/main",
+      "r": "http://schemas.openxmlformats.org/officeDocument/2006/relationships",
+      "rel": "http://schemas.openxmlformats.org/package/2006/relationships"}
+RID = "{%s}id" % NS["r"]
+
+def rels(z, part):
+    d, f = posixpath.split(part)
+    rp = posixpath.join(d, "_rels", f + ".rels")
+    if rp not in z.namelist(): return {}
+    out = {}
+    for r in ET.fromstring(z.read(rp)).findall("rel:Relationship", NS):
+        out[r.get("Id")] = (r.get("Type", ""), posixpath.normpath(posixpath.join(d, r.get("Target"))))
+    return out
+
+def shape_paragraphs(sp):
+    paras = []
+    for p in sp.iter("{%s}p" % NS["a"]):
+        t = "".join(x.text or "" for x in p.iter("{%s}t" % NS["a"])).strip()
+        # skip decorative labels (step numbers, check marks, arrows) that carry no text
+        if t and any(ch.isalpha() for ch in t): paras.append(t)
+    return paras
+
+try:
+    z = zipfile.ZipFile(sys.argv[1])
+    pres = ET.fromstring(z.read("ppt/presentation.xml"))
+    prels = rels(z, "ppt/presentation.xml")
+    slides = []
+    for i, sid in enumerate(pres.findall("p:sldIdLst/p:sldId", NS), 1):
+        part = prels[sid.get(RID)][1]
+        root = ET.fromstring(z.read(part))
+        title, text = "", []
+        for sp in root.iter("{%s}sp" % NS["p"]):
+            ph = sp.find("p:nvSpPr/p:nvPr/p:ph", NS)
+            paras = shape_paragraphs(sp)
+            if not paras: continue
+            if ph is not None and ph.get("type") in ("title", "ctrTitle") and not title:
+                title = " ".join(paras)
+            else:
+                text.extend(paras)
+        notes = ""
+        for typ, target in rels(z, part).values():
+            if typ.endswith("/notesSlide") and target in z.namelist():
+                nroot = ET.fromstring(z.read(target))
+                chunks = []
+                for sp in nroot.iter("{%s}sp" % NS["p"]):
+                    ph = sp.find("p:nvSpPr/p:nvPr/p:ph", NS)
+                    if ph is not None and ph.get("type") in ("sldNum", "sldImg", "hdr", "ftr", "dt"): continue
+                    chunks.extend(shape_paragraphs(sp))
+                notes = "\\n".join(chunks)
+        slides.append({"index": i, "title": title or (text[0] if text else f"Slide {i}"), "text": text, "notes": notes})
+    print(json.dumps({"slides": slides}))
+except Exception as e:
+    print(json.dumps({"error": str(e)}))
+`}};var b=require("../../../webpack-runtime.js");b.C(a);var c=b.X(0,[1331,7372,1692,6114,3616],()=>b(b.s=24532));module.exports=c})();

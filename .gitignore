@@ -1,3 +1,4 @@
-node/
-node-v*-darwin-*/
+/node/
+/node-v*-darwin-*/
+ilovework-runtime/runtime/node-v*-darwin-*/
 .DS_Store
