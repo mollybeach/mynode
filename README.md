@@ -43,3 +43,33 @@ If they still say "command not found", find the folder with
 points at it (remove any older one that points somewhere else), and open a new Terminal window.
 
 Node.js is MIT licensed; its license (`LICENSE`) is inside each archive.
+
+## Troubleshooting: "npm not installed" / "command not found"
+
+Paste this whole block into Terminal (it assumes the clone is at `~/mynode`; change that path if yours is elsewhere):
+
+```bash
+echo "shell: $SHELL"
+ls ~/mynode/node/bin 2>&1
+grep -n "mynode" ~/.zshrc ~/.bash_profile ~/.bashrc 2>/dev/null
+echo "PATH: $PATH"
+which node npm
+~/mynode/node/bin/node -v 2>&1
+~/mynode/node/bin/npm -v 2>&1
+```
+
+What each line tells you:
+
+- `ls`: whether `setup.command` actually unpacked Node. "No such file" means it didn't run, or `mynode` is somewhere else.
+- `grep`: whether the PATH line was added, and to which file. If your shell is bash rather than zsh, `~/.zshrc` is never read: add the line to `~/.bash_profile` instead.
+- `which`: whether Terminal can find `node` and `npm` on its path.
+- The last two: whether Node works at all when called by its full path. If these print versions but plain `npm` doesn't, only the PATH line needs fixing.
+
+Running ilovework doesn't need npm at all: `npm install` and `npm run dev` are only for changing its code. In the ilovework folder:
+
+```bash
+git pull
+./start.command
+```
+
+`start.command` never uses npm. It uses the Node bundled in that repo, so the app starts even while the Terminal path is broken.
