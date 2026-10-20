@@ -1,0 +1,3 @@
+node/
+node-v*-darwin-*/
+.DS_Store
