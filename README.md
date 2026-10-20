@@ -24,7 +24,25 @@ From the `Jeremy_Guzman` folder, it copies `dist/` (the prebuilt app, Next.js in
 cd ~/Desktop/Kiro/Jeremy_Guzman/ilovework && ./start.command
 ```
 
-## Jeremy: make `node` and `npm` work in Terminal (optional)
+## Jeremy: put `node` and `npm` on the PATH
+
+After the installer has run once, Node and npm are in `ilovework/runtime/`. To use `node`, `npm` and `npx` in any
+Terminal window, run this once:
+
+```bash
+A=$([ "$(uname -m)" = arm64 ] && echo arm64 || echo x64); echo "export PATH=\"$HOME/Desktop/Kiro/Jeremy_Guzman/ilovework/runtime/node-v22.23.3-darwin-$A/bin:\$PATH\"" >> ~/.zshrc && source ~/.zshrc && node -v && npm -v
+```
+
+It picks the folder for this Mac's chip, adds it to `~/.zshrc` and loads it. It should end by printing `v22.23.3` and
+`10.9.9`. To remove older PATH lines from earlier attempts that point at `mynode`:
+
+```bash
+sed -i '' '/mynode\/node\/bin/d' ~/.zshrc
+```
+
+Running ilovework doesn't need this: `./start.command` finds its own Node.
+
+## Optional: use mynode's own Node instead
 
 Only needed for using `node` / `npm` yourself; ilovework doesn't need it.
 
