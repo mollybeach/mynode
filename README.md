@@ -8,39 +8,38 @@ from https://nodejs.org/dist/v22.23.3/, unchanged, with nodejs.org's published `
 | `node-v22.23.3-darwin-arm64.tar.xz` | Apple Silicon (M1 and later) |
 | `node-v22.23.3-darwin-x64.tar.xz` | Intel |
 
-## Use it
+## Jeremy: start ilovework (one command)
 
-Clone it into `~/tools` (a stable place outside your repos, Downloads and Desktop: the PATH line points at it, so it
-has to stay put):
+Your folders are `~/Desktop/Kiro/Jeremy_Guzman/mynode` and `~/Desktop/Kiro/Jeremy_Guzman/ilovework`. In Terminal:
 
 ```bash
-mkdir -p ~/tools
-cd ~/tools
-git clone git@github.com:mollybeach/mynode.git
-cd mynode
-./setup.command
+cd ~/Desktop/Kiro/Jeremy_Guzman
+git -C mynode pull && ./mynode/ilovework-runtime/install.command
 ```
 
-Or double-click `setup.command`. It checks the file for this Mac against `SHASUMS256.txt`, unpacks it into
-`./node`, and prints the one line to add to `~/.zshrc` so `node` and `npm` work in any Terminal. No admin rights
-are needed and nothing is installed system-wide. To remove it, delete the folder and that line.
+That copies `start.command` and this Node into `ilovework` and starts the app at http://localhost:3000. No Node
+install and no npm needed. After that, start it any time with:
 
-## Make `node` and `npm` work in Terminal
+```bash
+cd ~/Desktop/Kiro/Jeremy_Guzman/ilovework && ./start.command
+```
 
-After `setup.command`:
+## Jeremy: make `node` and `npm` work in Terminal (optional)
 
-1. From inside the `mynode` folder (wherever you cloned it), add it to `~/.zshrc`:
+Only needed for using `node` / `npm` yourself; ilovework doesn't need it.
 
-   ```bash
-   echo "export PATH=\"$(pwd)/node/bin:\$PATH\"" >> ~/.zshrc
-   ```
+```bash
+cd ~/Desktop/Kiro/Jeremy_Guzman/mynode
+./setup.command
+sed -i '' '/Documents\/GitHub\/mynode/d' ~/.zshrc
+grep -q 'Jeremy_Guzman/mynode/node/bin' ~/.zshrc || echo 'export PATH="$HOME/Desktop/Kiro/Jeremy_Guzman/mynode/node/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
+node -v && npm -v
+```
 
-2. Load it, or open a new Terminal window: `source ~/.zshrc`
-3. Check both: `node -v` should say `v22.23.3`, and `npm -v` should say `10.9.9`.
-
-If they still say "command not found", find the folder with
-`find ~ -maxdepth 5 -type d -path "*mynode/node/bin" 2>/dev/null`, make sure the `export PATH=...` line in `~/.zshrc`
-points at it (remove any older one that points somewhere else), and open a new Terminal window.
+`setup.command` checks the Node file for this Mac against `SHASUMS256.txt` and unpacks it into `mynode/node` (press
+Enter when it says so). The `sed` line removes an old PATH line that pointed at `~/Documents/GitHub/mynode`. The last
+line should print `v22.23.3` and `10.9.9`. To remove it all, delete `mynode/node` and that line in `~/.zshrc`.
 
 Node.js is MIT licensed; its license (`LICENSE`) is inside each archive.
 
@@ -74,26 +73,4 @@ git pull
 
 `start.command` never uses npm. It uses the Node bundled in that repo, so the app starts even while the Terminal path is broken.
 
-## For ilovework: one command
-
-Put mynode and ilovework side by side in the same folder, then from that folder run:
-
-```bash
-git -C mynode pull && ./mynode/ilovework-runtime/install.command
-```
-
-Example: Jeremy's folders are `~/Desktop/Kiro/Jeremy_Guzman/mynode` and `~/Desktop/Kiro/Jeremy_Guzman/ilovework`, so he runs:
-
-```bash
-cd ~/Desktop/Kiro/Jeremy_Guzman
-git -C mynode pull && ./mynode/ilovework-runtime/install.command
-```
-
-and afterwards starts the app with:
-
-```bash
-cd ~/Desktop/Kiro/Jeremy_Guzman/ilovework && ./start.command
-```
-
-It copies the launcher and this Node into ilovework and starts the app (no Node install, no npm). Details:
-`ilovework-runtime/README.md`.
+More on the ilovework files (what `start.command` does, keeping it out of git): `ilovework-runtime/README.md`.
