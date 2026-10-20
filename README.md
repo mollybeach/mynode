@@ -26,19 +26,15 @@ cd ~/Desktop/Kiro/Jeremy_Guzman/ilovework && ./start.command
 
 ## Jeremy: put `node` and `npm` on the PATH
 
-After the installer has run once, Node and npm are in `ilovework/runtime/`. To use `node`, `npm` and `npx` in any
-Terminal window, run this once:
+Run this once (copy it exactly; it has no quotes, so it survives being pasted from a chat):
 
 ```bash
-A=$([ "$(uname -m)" = arm64 ] && echo arm64 || echo x64); echo "export PATH=\"$HOME/Desktop/Kiro/Jeremy_Guzman/ilovework/runtime/node-v22.23.3-darwin-$A/bin:\$PATH\"" >> ~/.zshrc && source ~/.zshrc && node -v && npm -v
+~/Desktop/Kiro/Jeremy_Guzman/mynode/add-to-path.command
 ```
 
-It picks the folder for this Mac's chip, adds it to `~/.zshrc` and loads it. It should end by printing `v22.23.3` and
-`10.9.9`. To remove older PATH lines from earlier attempts that point at `mynode`:
-
-```bash
-sed -i '' '/mynode\/node\/bin/d' ~/.zshrc
-```
+It unpacks Node into `mynode/node` if it isn't there yet (checked against `SHASUMS256.txt`), removes older `mynode`
+PATH lines from `~/.zshrc`, adds the right one, and prints the node and npm versions. Then open a new Terminal window
+(or run `source ~/.zshrc`): `node -v` should say `v22.23.3` and `npm -v` should say `10.9.9`, from any folder.
 
 Running ilovework doesn't need this: `./start.command` finds its own Node.
 
