@@ -73,3 +73,8 @@ git pull
 ```
 
 `start.command` never uses npm. It uses the Node bundled in that repo, so the app starts even while the Terminal path is broken.
+
+## For ilovework
+
+`ilovework-runtime/` has `start.command` and `runtime/` to copy into an ilovework checkout so it starts with no Node
+install and no npm. See `ilovework-runtime/README.md`.
